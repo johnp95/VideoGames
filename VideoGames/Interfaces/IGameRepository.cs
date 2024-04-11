@@ -13,6 +13,8 @@ namespace VideoGames.Interfaces
         Task<Game?> DeleteAsync(int id);
 
         Task<Game> CreateAsync(Game gameModel);
+
+        Task<Game?> UpdateAsync(int id, UpdateGameRequestDto gameDto);
     }
 
 }
