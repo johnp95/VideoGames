@@ -27,17 +27,7 @@ namespace VideoGames.Controllers
             return Ok(gameDto);
 
         }
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var game = await _gameRepo.GetByIdAsync(id);
-
-            if (game == null)
-            {
-                return NotFound();
-            }
-            return Ok(game.ToGameDto());
-        }
+        
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -52,11 +42,29 @@ namespace VideoGames.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateGameDto gameDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var gameModel = gameDto.ToGameFromCreate();
 
             await _gameRepo.CreateAsync(gameModel);
 
-            return CreatedAtAction(nameof(GetById), new {id = gameModel.Id}, gameModel.ToGameDto());
+            return CreatedAtAction(nameof(Get), new {id = gameModel.Id}, gameModel.ToGameDto());
+        }
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update([FromRoute] int id, UpdateGameRequestDto gameDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var gameModel = await _gameRepo.UpdateAsync(id, gameDto);
+
+            if (gameModel == null)
+                return NotFound();
+            
+            return Ok(gameModel.ToGameDto());
         }
     }
 }
