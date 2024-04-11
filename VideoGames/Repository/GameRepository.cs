@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VideoGames.Data;
+using VideoGames.Dtos;
 using VideoGames.Helpers;
 using VideoGames.Interfaces;
 using VideoGames.Models;
@@ -65,6 +66,26 @@ namespace VideoGames.Repository
         {
             return await _context.Games.FirstOrDefaultAsync(x => x.Id == id);
 
+        }
+
+        public async Task<Game?> UpdateAsync(int id, UpdateGameRequestDto gameDto)
+        {
+            var existingGame = await _context.Games.FirstOrDefaultAsync(x =>x.Id == id);
+
+            if (existingGame == null)
+            {
+                return null;
+                     
+            }
+            existingGame.Title = gameDto.Title;
+            existingGame.Developer = gameDto.Developer;
+            existingGame.Publisher = gameDto.Publisher; 
+            existingGame.Platform = gameDto.Platform;   
+            existingGame.ReleaseDate = gameDto.ReleaseDate;
+
+            await _context.SaveChangesAsync();
+
+            return existingGame;
         }
     }
 
