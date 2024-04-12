@@ -1,0 +1,8 @@
+/* styles.css (or your component's stylesheet) */
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
