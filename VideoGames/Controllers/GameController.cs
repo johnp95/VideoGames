@@ -21,21 +21,32 @@ namespace VideoGames.Controllers
         public async Task<IActionResult> Get([FromQuery] QueryObject query)
         {
             var games = await _gameRepo.GetAllAsync(query);
-            var gameDto = games.Select(g => g.ToGameDto());
+            // var gameDto = games.Select(g => g.ToGameDto());
 
 
-            return Ok(gameDto);
+            return Ok(games);
 
         }
-        
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var game = await _gameRepo.GetByIdAsync(id);
+
+            if (game == null)
+            {
+                return NotFound();
+            }
+            return Ok(game);
+        }
+
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
             var game = await _gameRepo.DeleteAsync(id);
 
-            if ( game == null)
+            if (game == null)
             {
-                return NotFound();    
+                return NotFound();
             }
             return NoContent();
         }
@@ -50,7 +61,7 @@ namespace VideoGames.Controllers
 
             await _gameRepo.CreateAsync(gameModel);
 
-            return CreatedAtAction(nameof(Get), new {id = gameModel.Id}, gameModel.ToGameDto());
+            return CreatedAtAction(nameof(Get), new { id = gameModel.Id }, gameModel.ToGameDto());
         }
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, UpdateGameRequestDto gameDto)
@@ -63,7 +74,7 @@ namespace VideoGames.Controllers
 
             if (gameModel == null)
                 return NotFound();
-            
+
             return Ok(gameModel.ToGameDto());
         }
     }
