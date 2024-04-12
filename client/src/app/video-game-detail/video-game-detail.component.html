@@ -1,0 +1,25 @@
+<div class="center-content bg-gray-200 shadow-md">
+  @if (game) {
+  <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <img
+      [src]="game.imgUrl"
+      alt="{{ game.title }}"
+      class="w-full h-64 object-cover"
+    />
+    <div class="p-4 bg-gray-200">
+      <a href="https://www.wikipedia.org/wiki/{{ game.title }}" target="_blank">
+        <h3 class="text-lg font-semibold">{{ game.title }}</h3></a
+      >
+      <p class="text-sm text-gray-600">Developer: {{ game.developer }}</p>
+      <p class="text-sm text-gray-600">Publisher: {{ game.publisher }}</p>
+      <p class="text-sm text-gray-600">Platform: {{ game.platform }}</p>
+      <p class="text-sm text-gray-600">
+        Release Date: {{ game.releaseDate | date }}
+      </p>
+      <a [routerLink]="['/']" class="text-blue-500 hover:underline">
+        Go Back Home
+      </a>
+    </div>
+  </div>
+  }
+</div>
