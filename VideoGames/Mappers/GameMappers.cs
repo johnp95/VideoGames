@@ -15,7 +15,7 @@ namespace VideoGames.Mappers
                 Platform = gameModel.Platform,
                 ReleaseDate = gameModel.ReleaseDate
             };
-            
+
         }
         public static Game ToGameFromCreate(this CreateGameDto gameDto)
         {
@@ -27,7 +27,7 @@ namespace VideoGames.Mappers
                 Platform = gameDto.Platform,
                 ReleaseDate = gameDto.ReleaseDate
             };
-            
+
         }
     }
 }
