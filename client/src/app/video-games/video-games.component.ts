@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { GamesService } from '../games.service';
+import { GamesService } from '../services/games.service';
 import { GameDetail } from '../interfaces/game-detail';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
