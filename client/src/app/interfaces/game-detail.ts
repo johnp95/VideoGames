@@ -1,7 +1,7 @@
 export interface GameDetail {
   id: number;
-  imgUrl: string;
   title: string;
+  imgUrl: string;
   developer: string;
   publisher: string;
   platform: string;
