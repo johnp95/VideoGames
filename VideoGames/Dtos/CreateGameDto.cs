@@ -5,14 +5,14 @@ namespace VideoGames.Dtos
     public class CreateGameDto
     {
         [Required]
-        public string? Title { get; set; }
-        public string? ImgUrl { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string ImgUrl { get; set; } = string.Empty;
         [Required]
-        public string? Developer { get; set; }
+        public string Developer { get; set; } = string.Empty;
         [Required]
-        public string? Publisher { get; set; }
+        public string Publisher { get; set; } = string.Empty;
         [Required]
-        public string? Platform { get; set; }
+        public string Platform { get; set; } = string.Empty;
         [Required]
         public DateTime ReleaseDate { get; set; }
     }
