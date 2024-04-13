@@ -11,14 +11,16 @@
       <p class="text-sm text-gray-600">Developer: {{ game.developer }}</p>
       <p class="text-sm text-gray-600">Publisher: {{ game.publisher }}</p>
       <p class="text-sm text-gray-600">Platform: {{ game.platform }}</p>
-      <!-- <p class="text-sm text-gray-600">
+      <p class="text-sm text-gray-600">
         Release Date: {{ game.releaseDate | date }}
-      </p> -->
-      <a
-        [routerLink]="['/games', game.id]"
-        class="text-blue-500 hover:underline"
-        >View Game Detail</a
-      >
+      </p>
+      <div class="flex justify-between">
+        <a
+          [routerLink]="['/games', game.id]"
+          class="text-blue-500 hover:underline"
+          >View Game</a
+        >
+      </div>
     </div>
   </div>
   }
