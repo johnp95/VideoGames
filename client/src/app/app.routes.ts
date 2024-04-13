@@ -7,7 +7,16 @@ import { VideoGameFormComponent } from './video-game-form/video-game-form.compon
 
 export const routes: Routes = [
   { path: '', title: 'Home', component: VideoGamesComponent },
-  { path: 'games/form', title: 'New Game', component: VideoGameFormComponent },
+  {
+    path: 'games/form',
+    title: 'New Game',
+    component: VideoGameFormComponent,
+  },
+  {
+    path: 'games/form/:id',
+    title: 'New Game',
+    component: VideoGameFormComponent,
+  },
   { path: 'games', title: 'Games', component: VideoGamesComponent },
   { path: 'games/:id', title: 'Games', component: VideoGameDetailComponent },
   {
