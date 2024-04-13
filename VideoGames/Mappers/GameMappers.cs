@@ -22,6 +22,7 @@ namespace VideoGames.Mappers
             return new Game
             {
                 Title = gameDto.Title,
+                ImgUrl = gameDto.ImgUrl,
                 Developer = gameDto.Developer,
                 Publisher = gameDto.Publisher,
                 Platform = gameDto.Platform,
