@@ -24,7 +24,6 @@ export class ReleaseDateComponent implements OnInit {
     this.gameService.getGames().subscribe({
       next: (res: any) => {
         this.games = res;
-        // Sort games by releaseDate (assuming releaseDate is a valid Date string)
         this.games.sort(
           (a, b) =>
             new Date(a.releaseDate).getTime() -
