@@ -51,7 +51,7 @@ namespace VideoGames.Controllers
             return NoContent();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CreateGameDto gameDto)
+        public async Task<IActionResult> Create([FromBody] CreateGameDto gameDto)
         {
             if (!ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace VideoGames.Controllers
 
             await _gameRepo.CreateAsync(gameModel);
 
-            return CreatedAtAction(nameof(Get), new { id = gameModel.Id }, gameModel.ToGameDto());
+            return CreatedAtAction(nameof(Get), new { id = gameModel.Id }, gameDto);
         }
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, UpdateGameRequestDto gameDto)
