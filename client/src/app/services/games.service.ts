@@ -16,7 +16,8 @@ export class GamesService {
   getGame(id: string): Observable<GameDetail> {
     return this.http.get<GameDetail>(this.apiUrl + '/' + id);
   }
-  createGame(data: GameDetail) {
-    this.http.post(this.apiUrl, data);
+
+  createGame(data: GameDetail): Observable<any> {
+    return this.http.post(this.apiUrl, data);
   }
 }
