@@ -3,6 +3,7 @@ import { GamesService } from '../services/games.service';
 import { GameDetail } from '../interfaces/game-detail';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-video-games',
@@ -15,6 +16,7 @@ export class VideoGamesComponent implements OnInit {
   private gameService = inject(GamesService);
 
   games: GameDetail[] = [];
+  toasterService = inject(ToastrService);
 
   ngOnInit(): void {
     this.loadGames();
