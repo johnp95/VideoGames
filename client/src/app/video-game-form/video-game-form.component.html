@@ -16,6 +16,42 @@
     @if (form.controls['title'].errors && form.controls['title'].touched) {
     <span class="text-red-400"> Title is required. </span>
     }
+    <div>
+      <input
+        formControlName="developer"
+        type="text"
+        class="border w-full my-3 p-2 px-4 rounded-md"
+        placeholder="Developer"
+      />
+      @if (form.controls['developer'].errors &&
+      form.controls['developer'].touched) {
+      <span class="text-red-400"> Developer is required. </span>
+      }
+    </div>
+    <div>
+      <input
+        formControlName="publisher"
+        type="text"
+        class="border w-full my-3 p-2 px-4 rounded-md"
+        placeholder="Publisher"
+      />
+      @if (form.controls['publisher'].errors &&
+      form.controls['publisher'].touched) {
+      <span class="text-red-400"> Publisher is required. </span>
+      }
+    </div>
+    <div>
+      <input
+        formControlName="platform"
+        type="text"
+        class="border w-full my-3 p-2 px-4 rounded-md"
+        placeholder="Platform"
+      />
+      @if (form.controls['platform'].errors &&
+      form.controls['platform'].touched) {
+      <span class="text-red-400"> Platform is required. </span>
+      }
+    </div>
   </div>
   <input
     formControlName="imgUrl"
@@ -24,48 +60,15 @@
     placeholder="Image"
   />
   <div>
-    <input
-      formControlName="developer"
-      type="text"
-      class="border w-full my-3 p-2 px-4 rounded-md"
-      placeholder="Developer"
-    />
-    @if (form.controls['developer'].errors &&
-    form.controls['developer'].touched) {
-    <span class="text-red-400"> Developer is required. </span>
-    }
-  </div>
-  <div>
-    <input
-      formControlName="publisher"
-      type="text"
-      class="border w-full my-3 p-2 px-4 rounded-md"
-      placeholder="Publisher"
-    />
-    @if (form.controls['publisher'].errors &&
-    form.controls['publisher'].touched) {
-    <span class="text-red-400"> Publisher is required. </span>
-    }
-  </div>
-  <div>
-    <input
-      formControlName="platform"
-      type="text"
-      class="border w-full my-3 p-2 px-4 rounded-md"
-      placeholder="Platform"
-    />
-    @if (form.controls['platform'].errors && form.controls['platform'].touched)
-    {
-    <span class="text-red-400"> Platform is required. </span>
-    }
-  </div>
-  <div>
-    <input
-      formControlName="releaseDate"
-      type="date"
-      class="border w-full my-3 p-2 px-4 rounded-md"
-      placeholder="Release Date"
-    />
+    <label for="date"
+      >Release Date
+      <input
+        id="date"
+        formControlName="releaseDate"
+        type="date"
+        class="border w-full my-3 p-2 px-4 rounded-md"
+        placeholder="Release Date"
+    /></label>
     @if (form.controls['releaseDate'].errors &&
     form.controls['releaseDate'].touched) {
     <span class="text-red-400"> Date is required. </span>
