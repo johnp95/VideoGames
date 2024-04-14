@@ -1,6 +1,6 @@
 <header class="text-gray-600 body-font">
   <div
-    class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+    class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center bg-purple-500"
   >
     <a
       class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
@@ -23,27 +23,27 @@
       <span class="font-semibold text-black | text-2xl">Video Games</span>
     </a>
     <nav
-      class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center"
+      class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center text-gray-950"
     >
       <a
         routerLink="/games"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
-        class="mr-5 hover:text-black"
+        class="mr-5 hover:text-gray-50 text-black-500"
         >Video Games</a
       >
       <a
         routerLink="/release-date"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
-        class="mr-5 hover:text-gray-900"
+        class="mr-5 hover:text-gray-50 text-black-500"
         >Oldest Games</a
       >
       <a
         routerLink="/games/form"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
-        class="mr-5 hover:text-gray-900"
+        class="mr-5 hover:text-gray-50 text-black-500"
         >Create Game</a
       >
     </nav>
