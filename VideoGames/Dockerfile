@@ -11,5 +11,4 @@ WORKDIR /app
 COPY --from=build /app ./
 EXPOSE 5127
 ENV ASPNETCORE_URLS=http://0.0.0.0:5127
-ENV ASPNETCORE_ENVIRONMENT=Development
 ENTRYPOINT ["dotnet", "VideoGames.dll"]
