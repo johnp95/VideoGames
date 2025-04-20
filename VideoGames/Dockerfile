@@ -3,8 +3,8 @@ WORKDIR /source
 
 # Copy everything
 COPY . .
-RUN dotnet restore VideoGames/VideoGames.csproj
-RUN dotnet publish VideoGames/VideoGames.csproj -c Release -o /app
+RUN dotnet restore VideoGames.csproj
+RUN dotnet publish VideoGames.csproj -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
