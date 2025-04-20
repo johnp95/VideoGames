@@ -43,33 +43,54 @@ export class VideoGameFormComponent implements OnInit, OnDestroy {
     }
   }
 
+  // CHANGED: Modified onSubmit to format the date properly before submission
+  // CHANGED: Added debugging for imgUrl issue
   onSubmit() {
+    // Create a copy of form values to manipulate
+    const formData = { ...this.form.value };
+
+    // Log entire form data before submission
+    console.log('Form data before submission:', formData);
+
+    // Format the date properly if it exists
+    if (formData.releaseDate) {
+      // Convert to yyyy-MM-dd format
+      const date = new Date(formData.releaseDate);
+      formData.releaseDate = date.toISOString().split('T')[0];
+    }
+
+    console.log('Form data after date formatting:', formData);
+
     if (!this.isEdit) {
       this.gameformSubscription = this.gameService
-        .createGame(this.form.value)
+        .createGame(formData)
         .subscribe({
           next: (response) => {
-            console.log(response);
+            console.log('Create response:', response);
             this.toasterService.success('Game Successfully Added');
             this.router.navigateByUrl('/games');
           },
           error: (err) => {
-            console.log(err);
+            console.log('Create error:', err);
           },
         });
     } else {
-      this.gameService.editGame(this.id, this.form.value).subscribe({
+      console.log('Sending edit request with data:', formData);
+      this.gameService.editGame(this.id, formData).subscribe({
         next: (value) => {
+          console.log('Edit response:', value);
           this.toasterService.success('Edited successfully');
           this.router.navigateByUrl('/games');
         },
         error: (err) => {
+          console.log('Edit error:', err);
           this.toasterService.error('Unable to edit');
         },
       });
     }
   }
 
+  // CHANGED: Modified ngOnInit to properly format the date when loading existing data
   ngOnInit(): void {
     this.paramsSubscription = this.activatedRouter.params.subscribe({
       next: (res) => {
@@ -79,6 +100,11 @@ export class VideoGameFormComponent implements OnInit, OnDestroy {
         if (!id) return;
         this.gameService.getGame(id).subscribe({
           next: (res) => {
+            // Format incoming date if needed
+            if (res.releaseDate) {
+              const date = new Date(res.releaseDate);
+              res.releaseDate = date.toISOString().split('T')[0];
+            }
             this.form.patchValue(res);
             this.isEdit = true;
           },
@@ -89,7 +115,7 @@ export class VideoGameFormComponent implements OnInit, OnDestroy {
     });
     this.form = this.fb.group({
       title: ['', Validators.required],
-      imgUrl: [],
+      imgUrl: [''],
       developer: ['', Validators.required],
       publisher: ['', Validators.required],
       platform: ['', Validators.required],

@@ -1,9 +1,15 @@
 services:
+  angular-client:
+   build:
+    context: ./client
+   image: client:v1
+   ports:
+    - "4200:4200"
   webapi:
     build:
       context: ./VideoGames
       dockerfile: Dockerfile
-    image: video-games-server:v4
+    image: video-games-server:v1
     container_name: webapi
     ports:
       - "5127:5127"

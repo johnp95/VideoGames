@@ -10,6 +10,7 @@ namespace VideoGames.Mappers
             return new GameDto
             {
                 Title = gameModel.Title,
+                ImgUrl = gameModel.ImgUrl,
                 Developer = gameModel.Developer,
                 Publisher = gameModel.Publisher,
                 Platform = gameModel.Platform,

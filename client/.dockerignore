@@ -1,0 +1,16 @@
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.npm/
+.yarn/
+dist/
+coverage/
+.angular/
+.angular/cache/
+e2e/
+.vscode
+
+.dockerignore
+/VideoGames/Dockerfile
+docker-compose

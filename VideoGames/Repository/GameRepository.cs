@@ -46,7 +46,7 @@ namespace VideoGames.Repository
             if (!string.IsNullOrWhiteSpace(query.Title))
             {
                 games = games.Where(x => x.Title.Contains(query.Title));
-            } 
+            }
             if (!string.IsNullOrWhiteSpace(query.Developer))
             {
                 games = games.Where(x => x.Developer.Contains(query.Developer));
@@ -70,17 +70,18 @@ namespace VideoGames.Repository
 
         public async Task<Game?> UpdateAsync(int id, UpdateGameRequestDto gameDto)
         {
-            var existingGame = await _context.Games.FirstOrDefaultAsync(x =>x.Id == id);
+            var existingGame = await _context.Games.FirstOrDefaultAsync(x => x.Id == id);
 
             if (existingGame == null)
             {
                 return null;
-                     
+
             }
             existingGame.Title = gameDto.Title;
+            existingGame.ImgUrl = gameDto.ImgUrl;
             existingGame.Developer = gameDto.Developer;
-            existingGame.Publisher = gameDto.Publisher; 
-            existingGame.Platform = gameDto.Platform;   
+            existingGame.Publisher = gameDto.Publisher;
+            existingGame.Platform = gameDto.Platform;
             existingGame.ReleaseDate = gameDto.ReleaseDate;
 
             await _context.SaveChangesAsync();

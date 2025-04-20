@@ -1,0 +1,16 @@
+**/bin/
+**/obj/
+**/out/
+**/.vs/
+**/_ReSharper*/
+**/*.user
+**/*.userosscache
+**/*.suo
+**/*.dbmdl
+**/*.jfm
+**/*.pfx
+**/*.publishsettings
+
+.dockerignore
+/client/Dockerfile
+docker-compose
